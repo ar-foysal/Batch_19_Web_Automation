@@ -43,6 +43,5 @@ public class AdvanceLocator extends DriverSetup{
         Assert.assertEquals(actualUnitPrice, "$1,800.00");
         Assert.assertEquals(actualTotalPrice, "$3,600.00");
 
-
     }
 }

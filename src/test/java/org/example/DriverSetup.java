@@ -21,6 +21,6 @@ public class DriverSetup {
 
     @AfterSuite
     public void quiteDriver(){
-        driver.close();
+        driver.quit();
     }
 }
