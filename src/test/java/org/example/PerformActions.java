@@ -16,7 +16,6 @@ public class PerformActions extends DriverSetup{
         driver.get("https://demoqa.com/menu");
         WebElement mainItem2 = driver.findElement(By.xpath("//a[normalize-space()='Main Item 2']"));
         Actions actions = new Actions(driver);
-
         actions.clickAndHold(mainItem2).build().perform();
         Thread.sleep(2000);
         driver.findElement(By.xpath("(//a[@href='#'][normalize-space()='Sub Item'])[2]")).click();
@@ -34,7 +33,36 @@ public class PerformActions extends DriverSetup{
         driver.switchTo().frame("iframeResult");
         Select select = new Select(driver.findElement(By.xpath("//select[@id='cars']")));
         actions.keyDown(Keys.CONTROL).click(select.getOptions().get(1)).click(select.getOptions().get(2)).keyUp(Keys.CONTROL).build().perform();
-
         Thread.sleep(5000);
+    }
+
+    @Test
+    public void testCopyPast() throws InterruptedException {
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        Actions actions = new Actions(driver);
+        driver.findElement(By.xpath("//input[@id='autocomplete']")).sendKeys("Hello");
+
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("a");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform();
+        Thread.sleep(5000);
+
+
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("c");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform();
+        Thread.sleep(1000);
+
+        WebElement element = driver.findElement(By.xpath("//input[@id='name']"));
+        element.sendKeys(Keys.CONTROL, "v");
+        Thread.sleep(1000);
+
+//        actions.scrollByAmount(0, 1600).build().perform();
+        actions.scrollToElement(driver.findElement(By.xpath("//button[@id='mousehover']"))).build().perform();
+        Thread.sleep(5000);
+
+
     }
 }
